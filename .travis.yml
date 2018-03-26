@@ -1,0 +1,11 @@
+language: c
+sudo: false # only for faster builds
+script:
+  - clang -coverage -O0 cray.c -o cray
+  - ./cray
+script:
+  - gcc -O3 -lm -s -o cray cray.c
+  - ./cray
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+gcc -O3 -lm -s -o cray cray.c
